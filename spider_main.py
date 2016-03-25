@@ -1,10 +1,13 @@
 #!/usr/bin/env python 
 #coding = utf-8
 
-from baike import url_manager,html_downloader,html_parser,html_outputer
+import url_manager
+import html_downloader
+import html_parser
+import html_outputer
 
 class SpiderMain(object):
-    def __int__(self):
+    def __int__(self,urls,downloader,parser,outputer):
         self.urls = url_manager.UrlManager()
         self.downloader = html_downloader.HtmlDownloader()
         self.parser = html_parser.HtmlParser()
@@ -26,7 +29,8 @@ class SpiderMain(object):
             except:
                 print 'craw failed!'
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root_url = 'http://baike.baidu.com/view/125370.htm'
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)
+

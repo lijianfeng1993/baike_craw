@@ -5,20 +5,23 @@ class UrlManager(object):
         self.new_urls = set()
         self.old_urls = set()    
     
-    def add_new_url(self):
+    def add_new_url(self,url):
         if url is None:
             return 
-        if url not in self.new_urls and url not in self.olf_urls:
+        if url not in self.new_urls and url not in self.old_urls:
             self.new_urls.add(url)
     
-    def add_new_urls(self):
+    def add_new_urls(self,urls):
         if urls is None or len(urls) == 0:
             return None
         for url in urls:
             self.add_new_url(url)
 
     def has_new_url(self):
-        return len(self.new_urls) != 0
+        if len(self.new_urls) != 0:
+            return True
+        else:
+            return False
         
     def get_new_url(self):
         new_url = self.new_urls.pop()
